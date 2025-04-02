@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import PlannerForm from './pages/PlannerForm';
+import AttractionsPage from './pages/explore';
+import Layout from "./components/Layout";  
+import Itinerary from './pages/Itinerary';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="PlannerForm" element={<PlannerForm />} />
+          <Route path="explore" element={<AttractionsPage />} />
+          <Route path='Itinerary' element={<Itinerary></Itinerary>}></Route>
+        </Route>
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
